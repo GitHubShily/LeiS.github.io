@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EgoGesture Dataset</title>
+</head>
+<body>
+<div style="width: 80%; display: block;">
+    <h1 align="center">EgoGesture Dataset</h1>
+    <p>EgoGesture is a multi-modal large scale dataset for egocentric hand gesture recognition. This dataset provides
+        the
+        test-bed not only for gesture classification in segmented data but also for gesture detection in continuous
+        data.</p>
+    <h2>Dataset at a glance</h2>
+    <div align="center">
+        <div style="width: 50%;float: left">
+            <iframe width="448" height="252" src="https://www.youtube.com/embed/bO3TgU1s7hM" frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+
+        <div style="width: 50%;float: right">
+            <iframe width="448" height="252" src="https://www.youtube.com/embed/FYDouZ16Qi4" frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <h2>Introduction of the dataset</h2>
+    <p>The dataset contains 2,081 RGB-D videos, 24,161 gesture samples and 2,953,224 frames from 50 distinct subjects.
+        We
+        design 83 classes of static or dynamic gestures focused on interaction with wearable devices as shown in
+        Figure 1.</p>
+    <!--<div align="center">-->
+        <!--<img src="fig_all_gestures_6rows_num.png"-->
+             <!--alt="Figure 2" width="822" height="303"/>-->
+    <!--</div>-->
+    <div align="center">
+        <img src="ego_gesture/Gestures_all.png"
+             alt="Figure 2" width="1107" height="1255"/>
+    </div>
+    <p align="middle"> Figure 1. The eighty-three classes of hand gestures designed in EgoGesture dataset.</p>
+    <p>
+        The videos are collected from 6 diverse indoor and outdoor scenes. We also consider the scenario when people
+        perform
+        gestures while walking. The 6 scenes we designed consist of 4 indoor scenes:
+    <ul>
+        <li>the subject in a stationary state with a static clutter background</li>
+        <li>the subject in a stationary state with a dynamic background</li>
+        <li>the subject in a stationary state facing a window with drastic-changing sunlight</li>
+        <li>the subject in a walking state</li>
+    </ul>
+    and 2 outdoor scenes:
+    <ul>
+        <li>the subject in a stationary state with a dynamic background</li>
+        <li>the subject in a walking state with a dynamic background.</li>
+    </ul>
+    The examples from the 6 scenes are illustrated in Figure 2.
+    </p>
+    <div align="center"><img src="ego_gesture/example5%20for%206%20scenes.png"
+                             alt="Figure 2" width="756" height="366"/>
+    </div>
+
+    <p align="middle"> Figure 2. Some examples of the 6 scenes.</p>
+    <p>Figure 3 demonstrate the sample distribution on each subject in the 6 scenes. In the figure, the horizontal axis
+        and
+        the vertical axis indicate the subject ID and the number of the samples, respectively. We use different colors
+        to
+        represent different scenes. The numeral on each color bar represents the number of gesture samples in the
+        corresponding scene recorded with the subject corresponding to the ID in the horizontal axis. There are 3
+        subjects
+        (i.e. Subject 3, Subject 7 and Subject 23) who did not record videos in all the 6 scenarios. The total number of
+        gesture samples of each subject is also listed above the stacked bars.</p>
+    <div align="center"><img src="ego_gesture/distribution.png"
+                             alt="Figure 3" width="1111" height="325"/>
+    </div>
+
+    <p align="middle"> Figure 3. The distribution of the gesture samples on each subject in EgoGesture dataset. The
+        horizontal axis and the vertical axis indicate the subject ID and the sample numbers respectively.</p>
+    <p> We select Intel RealSense SR300 as our egocentric camera due to its small size and integrating both RGB and
+        depth
+        modules. The two-modality videos are recorded in a resolution of 640ⅹ480 pixel with 30 fps. The subjects wearing
+        the
+        RealSense camera with a strap belt on their heads are asked to continuously perform 9-14 gestures as a session
+        and
+        recorded as a video. Since the order of the gestures performed is randomly generated, the videos can be used to
+        evaluate gesture detection in continuous stream. Besides the annotation of class label, the start and end frame
+        index of each gesture sample are also manually labeled, which provides the test-bed for segmented gesture
+        classification.
+    </p>
+    <p>In our experiments, we randomly split the data by subject into training (SubjectID: 3, 4, 5, 6, 8, 10, 15,
+        16,
+        17, 20, 21, 22, 23, 25, 26, 27, 30, 32, 36, 38, 39, 40, 42, 43, 44, 45, 46, 48, 49, 50), validation (SubjectID:
+        1,
+        7, 12, 13, 24, 29, 33, 34, 35, 37) and testing (SubjectID: 2, 9, 11, 14, 18, 19, 28, 31, 41, 47) sets with the
+        ratio
+        of 3:1:1, resulting in 1,239 training, 411 validation and 431 testing videos. The numbers of gesture samples in
+        training, validation and testing splits are 14416, 4768 and 4977 respectively.
+    </p>
+    <h2>How to access the dataset</h2>
+    <p>Please use the following form to download the dataset. We provide the original RGB-D videos (~46G), a file of
+        images
+        resized
+        to 320ⅹ240 pixel (~32G) and the annotations for downloading. There are three columns of text in an annotation
+        file
+        respectively representing the class label, the start and the end frame index of each gesture sample in a video.
+    </p>
+
+
+    <br>The dataset is organized in the following format:
+    <pre style="background-color: azure; font-size: 80%">
+    <code>
+        videos/Subject01/Scene1/Color/rgb1.avi
+        …
+        videos/Subject01/Scene1/Depth/depth1.avi
+        …
+        images_320-240/Subject01/Scene1/Color/rgb1/000001.jpg …
+        …
+        images_320-240/Subject01/Scene1/Depth/depth1/000001.jpg …
+        …
+        labels-revised1/subject01/Scene1/Group1.csv
+        …
+    </code>
+</pre>
+
+    <div align="center">
+        <iframe src="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeSi1rLkqEMRyiIN8__gCR6qj6kPyRFuEOYo42I1TYBPlCRmA/viewform?embedded=true"
+                width="760" height="500" frameborder="0" marginheight="0" marginwidth="0" align="center">正在加载...
+        </iframe>
+    </div>
+
+    <h2>Citation</h2>
+    <p>If you use our dataset, please cite the following paper:</p>
+</div>
+</body>
+</html>
+<!--/videos-->
+<!--/Subject01-->
+<!--/Scene1-->
+<!--/Color-->
+<!--rgb1.avi-->
+<!--rgb2.avi-->
+<!--...-->
+<!--/Depth-->
+<!--depth1.avi-->
+<!--depth2.avi-->
+<!--...-->
+<!--/Scene2-->
+<!--...-->
+<!--/Subject02-->
+<!--...-->
+<!--/images_320-240-->
+<!--/Subject01-->
+<!--/Scene1-->
+<!--/Color-->
+<!--/rgb1-->
+<!--000001.jpg-->
+<!--000002.jpg-->
+<!--...-->
+<!--/rgb2-->
+<!--...-->
+<!--/Depth-->
+<!--/depth1-->
+<!--000001.jpg-->
+<!--000002.jpg-->
+<!--...-->
+<!--/depth2-->
+<!--...-->
+<!--/Scene2-->
+<!--...-->
+<!--/Subject02-->
+<!--...-->
+<!--/labels-revised1-->
+<!--/Subject01-->
+<!--/Scene1-->
+<!--Group1.csv-->
+<!--Group2.csv-->
+<!--...-->
+<!--/Scene2-->
+<!--...-->
+<!--/Subject02-->
+<!--...-->
